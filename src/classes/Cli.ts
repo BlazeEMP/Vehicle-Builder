@@ -118,7 +118,7 @@ class Cli {
 			.then((answers) => {
 				// we create a default wheel object to use and assign it values if given
 				let wheel = new Wheel();
-				if (answers.wheelDiameter != '') {
+				if (answers.wheelDiameter.trim() != '' && answers.wheelBrand.trim() != '') {
 					wheel = new Wheel(answers.wheelDiameter, answers.wheelBrand);
 				}
 				const car = new Car(
@@ -194,7 +194,7 @@ class Cli {
 			.then((answers) => {
 				// we create a default wheel object to use and assign it values if given
 				let wheel = new Wheel();
-				if (answers.wheelDiameter != '') {
+				if (answers.wheelDiameter.trim() != '' && answers.wheelBrand.trim() != '') {
 					wheel = new Wheel(answers.wheelDiameter, answers.wheelBrand);
 				}
 				const truck = new Truck(
@@ -275,10 +275,10 @@ class Cli {
 				// this has two statements for the wheels since front and back may be different
 				let wheel1 = new Wheel();
 				let wheel2 = new Wheel();
-				if (answers.frontWheelDiameter != '' && answers.frontWheelBrand != '') {
+				if (answers.frontWheelDiameter.trim() != '' && answers.frontWheelBrand.trim() != '') {
 					wheel1 = new Wheel(answers.frontWheelDiameter, answers.frontWheelBrand);
 				}
-				if (answers.rearWheelDiameter != '' && answers.rearWheelBrand != '') {
+				if (answers.rearWheelDiameter.trim() != '' && answers.rearWheelBrand.trim() != '') {
 					wheel2 = new Wheel(answers.frontWheelDiameter, answers.frontWheelBrand);
 				}
 				const motorbike = new Motorbike(
