@@ -77,46 +77,50 @@ class Cli {
 				{
 					type: 'input',
 					name: 'color',
-					message: 'Enter Color',
+					message: 'Enter color',
 				},
 				{
 					type: 'input',
 					name: 'make',
-					message: 'Enter Make',
+					message: 'Enter make',
 				},
 				{
 					type: 'input',
 					name: 'model',
-					message: 'Enter Model',
+					message: 'Enter model',
 				},
 				{
 					type: 'input',
 					name: 'year',
-					message: 'Enter Year',
+					message: 'Enter year',
 				},
 				{
 					type: 'input',
 					name: 'weight',
-					message: 'Enter Weight',
+					message: 'Enter weight in lbs',
 				},
 				{
 					type: 'input',
 					name: 'topSpeed',
-					message: 'Enter Top Speed',
+					message: 'Enter top speed',
 				},
 				{
 					type: 'input',
 					name: 'wheelDiameter',
-					message: 'Enter wheel size in inches on the car',
+					message: 'Enter wheel diameter in inches on the car (must enter diameter and brand to not use default wheel)',
 				},
 				{
 					type: 'input',
 					name: 'wheelBrand',
-					message: 'Enter wheel brand on the car',
+					message: 'Enter wheel brand on the car (must enter diameter and brand to not use default wheel)',
 				},
 			])
 			.then((answers) => {
-				const wheel = new Wheel(answers.wheelDiameter, answers.wheelBrand);
+				// we create a default wheel object to use and assign it values if given
+				let wheel = new Wheel();
+				if (answers.wheelDiameter != '') {
+					wheel = new Wheel(answers.wheelDiameter, answers.wheelBrand);
+				}
 				const car = new Car(
 					// The generateVin method is static and should be called using the class name Cli, make sure to use Cli.generateVin() for creating any vehicle
 					Cli.generateVin(),
@@ -144,52 +148,55 @@ class Cli {
 				{
 					type: 'input',
 					name: 'color',
-					message: 'Enter Color',
+					message: 'Enter color',
 				},
 				{
 					type: 'input',
 					name: 'make',
-					message: 'Enter Make',
+					message: 'Enter make',
 				},
 				{
 					type: 'input',
 					name: 'model',
-					message: 'Enter Model',
+					message: 'Enter model',
 				},
 				{
 					type: 'input',
 					name: 'year',
-					message: 'Enter Year',
+					message: 'Enter year',
 				},
 				{
 					type: 'input',
 					name: 'weight',
-					message: 'Enter Weight',
+					message: 'Enter weight in lbs',
 				},
 				{
 					type: 'input',
 					name: 'topSpeed',
-					message: 'Enter Top Speed',
+					message: 'Enter top speed',
 				},
 				{
 					type: 'input',
 					name: 'wheelDiameter',
-					message: 'Enter wheel size in inches on the truck',
+					message: 'Enter wheel diameter in inches on the truck (must enter diameter and brand to not use default wheel)',
 				},
 				{
 					type: 'input',
 					name: 'wheelBrand',
-					message: 'Enter wheel brand on the truck',
+					message: 'Enter wheel brand on the truck (must enter diameter and brand to not use default wheel)',
 				},
 				{
 					type: 'input',
 					name: 'towingCapacity',
-					message: 'Enter Towing Capacity',
+					message: 'Enter towing capacity in lbs',
 				},
 			])
 			.then((answers) => {
-				// Use the answers object to pass the required properties to the Truck constructor
-				const wheel = new Wheel(answers.wheelDiameter, answers.wheelBrand);
+				// we create a default wheel object to use and assign it values if given
+				let wheel = new Wheel();
+				if (answers.wheelDiameter != '') {
+					wheel = new Wheel(answers.wheelDiameter, answers.wheelBrand);
+				}
 				const truck = new Truck(
 					Cli.generateVin(),
 					answers.color,
@@ -215,58 +222,65 @@ class Cli {
 				{
 					type: 'input',
 					name: 'color',
-					message: 'Enter Color',
+					message: 'Enter color',
 				},
 				{
 					type: 'input',
 					name: 'make',
-					message: 'Enter Make',
+					message: 'Enter make',
 				},
 				{
 					type: 'input',
 					name: 'model',
-					message: 'Enter Model',
+					message: 'Enter model',
 				},
 				{
 					type: 'input',
 					name: 'year',
-					message: 'Enter Year',
+					message: 'Enter year',
 				},
 				{
 					type: 'input',
 					name: 'weight',
-					message: 'Enter Weight',
+					message: 'Enter weight',
 				},
 				{
 					type: 'input',
 					name: 'topSpeed',
-					message: 'Enter Top Speed',
+					message: 'Enter top speed',
 				},
 				{
 					type: 'input',
 					name: 'frontWheelDiameter',
-					message: 'Enter Front Wheel Diameter',
+					message: 'Enter front wheel diameter in inches (must enter diameter and brand to not use default wheel)',
 				},
 				{
 					type: 'input',
 					name: 'frontWheelBrand',
-					message: 'Enter Front Wheel Brand',
+					message: 'Enter front wheel brand (must enter diameter and brand to not use default wheel)',
 				},
 				{
 					type: 'input',
 					name: 'rearWheelDiameter',
-					message: 'Enter Rear Wheel Diameter',
+					message: 'Enter rear wheel diameter in inches (must enter diameter and brand to not use default wheel)',
 				},
 				{
 					type: 'input',
 					name: 'rearWheelBrand',
-					message: 'Enter Rear Wheel Brand',
+					message: 'Enter rear wheel brand (must enter diameter and brand to not use default wheel)',
 				},
 			])
 			.then((answers) => {
-				// Use the answers object to pass the required properties to the Motorbike constructor
-				const wheel1 = new Wheel(answers.frontWheelDiameter, answers.frontWheelBrand);
-				const wheel2 = new Wheel(answers.rearWheelDiameter, answers.rearWheelBrand);
+				// we create a 2 default wheel objects to use and assign them values if given
+				// this has two statements for the wheels since front and back may be different
+				let wheel1 = new Wheel();
+				let wheel2 = new Wheel();
+				if (answers.frontWheelDiameter != '' && answers.frontWheelBrand != '') {
+					wheel1 = new Wheel(answers.frontWheelDiameter, answers.frontWheelBrand);
+				}
+				if (answers.rearWheelDiameter != '' && answers.rearWheelBrand != '') {
+					wheel2 = new Wheel(answers.frontWheelDiameter, answers.frontWheelBrand);
+				}
 				const motorbike = new Motorbike(
 					Cli.generateVin(),
 					answers.color,
