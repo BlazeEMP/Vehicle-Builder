@@ -398,20 +398,19 @@ class Cli {
 						}
 					}
 				} else if (answers.action === 'Tow') {
-					// add statements to perform the tow action only if the selected vehicle is a truck. Call the findVehicleToTow method to find a vehicle to tow and pass the selected truck as an argument. After calling the findVehicleToTow method, you will need to return to avoid instantly calling the performActions method again since findVehicleToTow is asynchronous.
-					// find vehicle first, compare vehicle type, it must be truck, then we execute
+					// find vehicle first, compare vehicle type, it must be truck, then we execute findVehicleToTow
 					for (let i = 0; i < this.vehicles.length; i++) {
 						if (this.vehicles[i].vin === this.selectedVehicleVin && this.vehicles[i].constructor === Truck) { // compares the vin AND if the value is a truck, since only trucks can tow
 							// we know the type already, but array contains multiple types, assign any type to allow to pass what typescript still may think is a Car or Motorbike
 							const towTruck: any = this.vehicles[i];
 							this.findVehicleToTow(towTruck);
-							return;
+							return; // we return to prevent the final performActions from immediately executing since findVehicleToTow is asynchronous
 						} else if (this.vehicles[i].vin === this.selectedVehicleVin && this.vehicles[i].constructor != Truck) {
 							console.log(`${this.vehicles[i].make} ${this.vehicles[i].model} isn't a truck and can't tow!`);
 						}
 					}
 				} else if (answers.action === 'Wheelie') {
-					// add statements to perform the wheelie action only if the selected vehicle is a motorbike and if not will let you know selected vehicle can't wheelie
+					// find the selected vehicle check is a motorbike and if not will let you know selected vehicle can't wheelie
 					for (let i = 0; i < this.vehicles.length; i++) {
 						if (this.vehicles[i].vin === this.selectedVehicleVin && this.vehicles[i].constructor === Motorbike) { // compares the vin AND if the value is a motorbike, since only motorbikes can wheelie
 							// we know the type already, but array contains multiple types, assign any type to allow to pass what typescript still may think is a Car or Motorbike
