@@ -279,7 +279,7 @@ class Cli {
 					wheel1 = new Wheel(answers.frontWheelDiameter, answers.frontWheelBrand);
 				}
 				if (answers.rearWheelDiameter.trim() != '' && answers.rearWheelBrand.trim() != '') {
-					wheel2 = new Wheel(answers.frontWheelDiameter, answers.frontWheelBrand);
+					wheel2 = new Wheel(answers.rearWheelDiameter, answers.rearWheelBrand);
 				}
 				const motorbike = new Motorbike(
 					Cli.generateVin(),
@@ -316,7 +316,6 @@ class Cli {
 			])
 			.then((answers) => {
 				// check if the selected vehicle is the SAME truck, remember answer is an object, now containing vehicleToTow object that has all properties of the vehicle passed in
-				console.log(answers);
 				if (truck.vin === answers.vehicleToTow.vin) {
 					// if it is, logs that the truck cannot tow itself then return to perform actions on the truck to allow a new choice
 					console.log(`The ${truck.make} ${truck.model} can't tow itself`);

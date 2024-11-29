@@ -27,6 +27,9 @@
   * It will step you through action menus, simply select a promt and hit enter
   * If prompted for information when creating a vehicle or otherwise type your answer and hit enter to lock it in.
 
+  DEMO VIDEO:
+  https://drive.google.com/file/d/19gf1-3ixdLCeDe35j-T_b7WZNJTIIUno/view?usp=sharing 
+
   ## License
 
   This project uses the [CC0](http://creativecommons.org/publicdomain/zero/1.0/) license. Click the link to learn more.
